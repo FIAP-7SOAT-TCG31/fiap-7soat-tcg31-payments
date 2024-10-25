@@ -12,7 +12,6 @@ export class CreatePaymentController {
 
   @Post()
   async execute(@Body() data: CreatePaymentInput) {
-    console.log(data, 'findme');
     const result = await this.commandBus.execute<
       CreatePaymentCommand,
       CreatePaymentResult
