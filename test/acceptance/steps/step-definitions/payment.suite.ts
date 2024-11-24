@@ -12,7 +12,7 @@ export class PaymentSuite {
   @Given('a payment was requested')
   async requestPayment() {
     const res = await this.http.axiosRef.post(
-      'http://localhost:3000/v1/payments',
+      'http://localhost:4000/v1/payments',
       {
         type: 'PixQrCode',
         amount: 999.99,
@@ -25,21 +25,21 @@ export class PaymentSuite {
   @When('customer executes the payment instruction')
   async executePaymentInstructionAndSystemGetsNotified() {
     await this.http.axiosRef.patch(
-      `http://localhost:3000/v1/payments/${this.paymentId}/approve`,
+      `http://localhost:4000/v1/payments/${this.paymentId}/approve`,
     );
   }
 
   @When('the payment instruction is rejected')
   async rejectPaymentInstructionAndSystemGetsNotified() {
     await this.http.axiosRef.patch(
-      `http://localhost:3000/v1/payments/${this.paymentId}/reject`,
+      `http://localhost:4000/v1/payments/${this.paymentId}/reject`,
     );
   }
 
   @Then('the payment gets rejected')
   async verifyPaymentRejected() {
     const res = await this.http.axiosRef.get(
-      `http://localhost:3000/v1/payments/${this.paymentId}`,
+      `http://localhost:4000/v1/payments/${this.paymentId}`,
     );
 
     const paymentStatus = res.data.status;
@@ -49,7 +49,7 @@ export class PaymentSuite {
   @Then('the payment gets approved')
   async verifyPaymentApproved() {
     const res = await this.http.axiosRef.get(
-      `http://localhost:3000/v1/payments/${this.paymentId}`,
+      `http://localhost:4000/v1/payments/${this.paymentId}`,
     );
 
     const paymentStatus = res.data.status;
