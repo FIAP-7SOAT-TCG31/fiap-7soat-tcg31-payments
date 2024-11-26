@@ -39,11 +39,6 @@ export class HealthzController {
 
     return this.health.check([
       () => this.mongodb.pingCheck('Database'),
-      () =>
-        this.http.pingCheck(
-          'UpstreamSampleTest',
-          'http://localhost:3000/healthz/self',
-        ),
       () => amqp?.isConnected('MessageBroker'),
     ]);
   }
