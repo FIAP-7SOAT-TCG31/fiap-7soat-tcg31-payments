@@ -13,10 +13,10 @@ spec:
       labels:
         app: fiap-burger-payments
     spec:
-      terminationGracePeriod: 90
       automountServiceAccountToken: false
       containers:
         - name: fiap-burger-payments-app
+          terminationGracePeriod: 90
           image: gm50x/fiap-burger-payments:latest
           imagePullPolicy: Always
           envFrom:
