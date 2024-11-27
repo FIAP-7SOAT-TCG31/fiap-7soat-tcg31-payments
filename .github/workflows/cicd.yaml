@@ -106,6 +106,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+          build-args: |
+            target="fiap-burger-payments"
           tags: |
             gm50x/fiap-burger-payments:latest
             gm50x/fiap-burger-payments:v${{ github.run_number }}
