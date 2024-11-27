@@ -107,7 +107,7 @@ jobs:
         with:
           push: true
           build-args: |
-            target="fiap-burger-payments"
+            target=fiap-burger-payments
           tags: |
             gm50x/fiap-burger-payments:latest
             gm50x/fiap-burger-payments:v${{ github.run_number }}
